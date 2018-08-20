@@ -6,10 +6,12 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "pretest": "npm run prepare",
-    "test": "npm run lint && jest",
+    "test": "jest",
     "test:coverage": "npm run test -- --coverage",
-    "lint": "tslint --project ./tsconfig.json",
+    "lint": "npm run tslint && npm run prettier:lint",
+    "tslint": "tslint --project ./tsconfig.json",
     "prettier": "prettier --write \"./**/*.ts\"",
+    "prettier:lint": "prettier --list-different \"./**/*.ts\"",
     "precommit": "npm run lint && npm test",
     "commitmsg": "commitlint -e",
     "prepare": "tsc"
